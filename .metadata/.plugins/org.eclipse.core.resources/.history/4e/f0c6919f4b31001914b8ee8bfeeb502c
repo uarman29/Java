@@ -1,0 +1,8 @@
+
+public class treeTester 
+{
+	public static void main(String[] args)
+	{
+		binaryTree testTree = new binaryTree(10,75);
+	}
+}

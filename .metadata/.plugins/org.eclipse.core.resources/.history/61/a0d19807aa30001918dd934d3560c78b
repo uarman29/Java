@@ -1,0 +1,8 @@
+
+public final class binaryTree 
+{
+	private binaryNode root;
+	private int depth;
+	
+	public binaryTree()
+}

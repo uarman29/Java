@@ -1,0 +1,49 @@
+package application;
+
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
+
+public class ImageTextCell extends ListCell<Contact>
+{
+	private VBox vbox = new VBox(8.0);
+	private ImageView profileImage = new ImageView();
+	private Label label = new Label();
+	
+	public ImageTextCell()
+	{
+		vbox.setAlignment(Pos.CENTER);
+		
+		profileImage.setPreserveRatio(true);
+		profileImage.setFitHeight(50);
+		vbox.getChildren().add(profileImage);
+		
+		label.setWrapText(true);
+		label.setTextAlignment(TextAlignment.CENTER);
+		vbox.getChildren().add(label);
+		
+		this.setPrefWidth(USE_PREF_SIZE);
+	}
+	
+	@Override
+	protected void updateItem(Contact item, boolean empty)
+	{
+		super.updateItem(item, empty);
+		
+		if(empty || item == null)
+		{
+			this.setGraphic(null);
+		}
+		else
+		{
+			//profileImage.setImage(new Image(item.getPicture()));
+			profileImage.setImage(new Image("C:\\Users\\Arman\\Pictures\\Saved Pictures\\bird.jpg"));
+			label.setText(item.getFirstName()+" "+item.getLastName());
+			this.setGraphic(vbox);
+		}
+	}
+}

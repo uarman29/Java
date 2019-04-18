@@ -1,0 +1,22 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
+public class ColorChooserController 
+{
+	@FXML private Rectangle colorRectangle;
+    @FXML private TextField greenTextField;
+    @FXML private Slider greenSlider;
+    @FXML private Slider redSlider;
+    @FXML private TextField alphaTextField;
+    @FXML private TextField redTextField;
+    @FXML private Slider blueSlider;
+    @FXML private TextField blueTextField;
+    @FXML private Slider alphaSlider;
+}

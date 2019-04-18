@@ -1,0 +1,54 @@
+
+public class binaryNode 
+{
+	private String data;
+	private binaryNode parent;
+	private binaryNode left;
+	private binaryNode right;
+	
+	public binaryNode(String initData)
+	{
+		data = initData;
+		parent = null;
+		left = null;
+		right = null;
+	}
+	public binaryNode(String initData, binaryNode initL)
+	{
+		data = initData;
+		parent = null;
+		left = initL;
+		right = null;
+	}
+	public binaryNode(String initData, binaryNode initL, binaryNode initR)
+	{
+		data = initData;
+		parent = null;
+		left = initL;
+		right = initR;
+	}
+	public binaryNode(String initData, binaryNode initL, binaryNode initR, binaryNode initP)
+	{
+		data = initData;
+		parent = initP;
+		left = initL;
+		right = initR;
+	}
+
+	public String getData()
+	{
+		return data;
+	}
+	public binaryNode getParent()
+	{
+		return parent;
+	}
+	public binaryNode getLeft()
+	{
+		return left;
+	}
+	public binaryNode getRight()
+	{
+		return right;
+	}
+}

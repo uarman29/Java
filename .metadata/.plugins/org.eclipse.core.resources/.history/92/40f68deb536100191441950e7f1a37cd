@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class CheckProtection 
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter an amount less than $10,000");
+		
+		String entered = input.nextLine();
+		int value = 0;
+		boolean decimal = false;
+		boolean twodigits = false;
+		boolean comma = false;
+		
+		try 
+		{
+			value = Integer.parseInt(entered);
+			if(value>10000)
+				System.err.println("Invalid Input");
+			
+			if(!entered.contains(",") && value >= 1000)
+			{
+				entered = entered.substring(0,1)+","+entered.substring(2,entered.length());
+			}
+			
+		}
+		catch(NumberFormatException e)
+		{
+			System.err.println("Invalid Input");
+		}
+	}
+}

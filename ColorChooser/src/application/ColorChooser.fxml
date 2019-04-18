@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ColorChooserController">
+  <columnConstraints>
+      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+      <ColumnConstraints hgrow="SOMETIMES" />
+    <ColumnConstraints hgrow="SOMETIMES" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Slider fx:id="redSlider" max="255.0" GridPane.columnIndex="1" />
+      <Slider fx:id="greenSlider" max="255.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Slider fx:id="blueSlider" max="255.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Slider fx:id="alphaSlider" max="1.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label text="Red" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <padding>
+            <Insets left="8.0" />
+         </padding></Label>
+      <Label text="Green" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <padding>
+            <Insets left="8.0" />
+         </padding></Label>
+      <Label text="Blue" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <padding>
+            <Insets left="8.0" />
+         </padding></Label>
+      <Label text="Alpha" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <padding>
+            <Insets left="8.0" />
+         </padding></Label>
+      <TextField fx:id="redTextField" alignment="CENTER" prefWidth="50.0" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="greenTextField" alignment="CENTER" prefWidth="50.0" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="blueTextField" alignment="CENTER" prefWidth="50.0" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="alphaTextField" alignment="CENTER" prefWidth="50.0" text="1.00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <Circle radius="40.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="18.0" />
+         </GridPane.margin>
+      </Circle>
+      <Rectangle fx:id="colorRectangle" arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="4" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="18.0" />
+         </GridPane.margin>
+      </Rectangle>
+   </children>
+</GridPane>

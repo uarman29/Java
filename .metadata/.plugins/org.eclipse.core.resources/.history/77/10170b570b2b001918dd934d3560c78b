@@ -1,0 +1,171 @@
+package application;
+
+import java.util.GregorianCalendar;
+
+import java.util.*;
+
+public class HeartRates 
+{
+	private String firstName;
+	private String lastName;
+	private int day;
+	private int month;
+	private int year;
+	private GregorianCalendar cal;
+	
+	public HeartRates(String firstName, String lastName, int day, int month, int year)
+	{
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.day = day;
+		this.month = month;
+		this.year = year;
+		try 
+		{
+			cal = new GregorianCalendar();
+			cal.setLenient(false);
+			cal.set(GregorianCalendar.YEAR, year);
+			cal.set(GregorianCalendar.MONTH, --month);
+			cal.set(GregorianCalendar.DATE, day);
+			
+			cal.getTime();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid Input");
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	
+	public String getFirstName()
+	{
+		return firstName;
+	}
+	public void setFirstName(String newName)
+	{
+		this.firstName = newName;
+	}
+	
+	public String getLastName()
+	{
+		return lastName;
+	}
+	public void setLastName(String newName)
+	{
+		this.lastName = newName;
+	}
+	
+	public int getDayOfBirth()
+	{
+		return day;
+	}
+	public int getMonthOfBirth()
+	{
+		return month;
+	}
+	public int getYearOfBirth()
+	{
+		return year;
+	}
+	public void printDateOfBirth()
+	{
+		String monthStr = Integer.toString(month);
+		if(monthStr.length()==1)
+			monthStr = "0" + monthStr;
+		
+		String dayStr = Integer.toString(day);
+		if(dayStr.length()==1)
+			dayStr = "0" + dayStr;
+			
+		System.out.println("Date Of Birth(mm-dd-yyyy):" + monthStr + "-" + dayStr + "-" + year);
+	}
+	
+	public String getDateOfBirth()
+	{
+		String monthStr = Integer.toString(month);
+		if(monthStr.length()==1)
+			monthStr = "0" + monthStr;
+		
+		String dayStr = Integer.toString(day);
+		if(dayStr.length()==1)
+			dayStr = "0" + dayStr;
+			
+		return ("Date Of Birth(mm-dd-yyyy):" + monthStr + "-" + dayStr + "-" + year);
+	}
+	
+	public void setDayOfBirth(int day)
+	{
+		try
+		{
+			this.day = day;
+			cal.set(GregorianCalendar.DATE, day);
+			
+			cal.getTime();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Invalid Input");
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	public void setMonthOfBirth(int month)
+	{
+		try
+		{
+			this.month = month;
+			cal.set(GregorianCalendar.MONTH, --month);
+			
+			cal.getTime();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Invalid Input");
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	public void setYearOfBirth(int year)
+	{
+		try
+		{
+			this.year = year;
+			cal.set(GregorianCalendar.YEAR, year);
+			
+			cal.getTime();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Invalid Input");
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	
+	public int getAge()
+	{
+		GregorianCalendar current = new GregorianCalendar();
+		int currentYear = current.get(GregorianCalendar.YEAR);
+		int currentMonth = current.get(GregorianCalendar.MONTH);
+		int currentDay = current.get(GregorianCalendar.DATE);
+		int age = (currentYear-year)-1;
+		if(currentMonth >= month && currentDay >= day)
+			age += 1;
+		
+		return age;	
+	}
+	
+	public int maxHeartRate()
+	{
+		return 220 - getAge();
+	}
+	
+	public String targetHeartRate()
+	{
+		int max = maxHeartRate();
+		int top = (int)(max*.85);
+		int bottom = (int)(max*.50);
+		return "Your target heart rate is "+bottom+" to "+top+" beats per minute.";
+	}
+}

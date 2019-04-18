@@ -1,0 +1,40 @@
+
+public class Navigator 
+{
+	private binaryTree source;
+	private binaryNode currentNode;
+	private int iterations;
+	private int currentTime;
+	
+	public Navigator(int N)
+	{
+		iterations = N;
+		source = new binaryTree();
+		currentNode = source.getRoot();
+		currentTime = 0;
+	}
+	
+	public void traverse()
+	{
+		int rNum;
+		int prob = source.getProb();
+		while(currentTime != iterations)
+		{
+			rNum = getRandomInteger(0,100);
+			if(rNum<prob)
+			{
+				
+			}
+			else
+			{
+				
+			}
+			currentTime++;
+		}
+	}
+	
+	public int getRandomInteger(int low, int high)
+	{
+		return (int)(Math.random()*(high-low)+1)+low;
+	}
+}

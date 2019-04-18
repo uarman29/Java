@@ -1,0 +1,13 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
+public class ColorChooserController {
+	
+}

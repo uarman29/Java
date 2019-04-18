@@ -1,0 +1,13 @@
+//Arman Uddin
+//CSC 221 Section P
+//Assignment 2
+
+public class treeTester 
+{
+	public static void main(String[] args)
+	{
+		binaryTree testTree = new binaryTree(10,50);
+		Navigator navi = new Navigator(testTree,100);
+		navi.traverse();
+	}
+}

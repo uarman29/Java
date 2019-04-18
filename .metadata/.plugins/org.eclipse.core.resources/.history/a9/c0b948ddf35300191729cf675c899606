@@ -1,0 +1,15 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+
+public class CoverViewerController 
+{
+
+    @FXML private ListView<?> bookListView;
+    @FXML private ImageView coverImageView;
+
+}

@@ -1,0 +1,46 @@
+
+public final class binaryTree 
+{
+	private binaryNode root;
+	private int depth;
+	private int upProb;
+	
+	public binaryTree()
+	{
+		root = new binaryNode();
+		depth = 0;
+		upProb = 50;
+	}
+	public binaryTree(int initD)
+	{
+		root = new binaryNode();
+		depth = initD;
+		upProb = 50;
+	}
+	public binaryTree(int initD,int initP)
+	{
+		root = new binaryNode();
+		depth = initD;
+		
+		if(initP >= 0 && initP <= 100)
+			upProb = initP;
+		else
+			upProb = 50;
+	}
+
+	private void createTree(binaryNode rootNode,int levels)
+	{
+		if(levels != depth)
+		{
+			levels++;
+			binaryNode nTop = new binaryNode(levels);
+			nTop.setParent(rootNode);
+			rootNode.setTop(nTop);
+			createTree(nTop,levels);
+			binaryNode nBottom = new binaryNode(levels);
+			nTop.setParent(rootNode);
+			rootNode.setTop(nTop);
+			createTree(nTop,levels);
+		}
+	}
+}

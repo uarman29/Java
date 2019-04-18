@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="fName" alignment="CENTER" layoutX="229.0" layoutY="56.0" promptText="First Name">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="150.0" layoutY="56.0" prefHeight="31.0" prefWidth="79.0" text="First Name: " />
+      <Label alignment="CENTER" layoutX="150.0" layoutY="112.0" prefHeight="31.0" prefWidth="79.0" text="Last Name: " />
+      <TextField fx:id="lName" alignment="CENTER" layoutX="229.0" layoutY="112.0" promptText="Last Name">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </TextField>
+      <Text layoutX="235.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing" textAlignment="CENTER" />
+      <TextField fx:id="DOB" alignment="CENTER" layoutX="229.0" layoutY="169.0" promptText="mm-dd-yyyy">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="129.0" layoutY="169.0" prefHeight="31.0" prefWidth="103.0" text="Date Of Birth: " />
+      <Button alignment="CENTER" layoutX="226.0" layoutY="218.0" mnemonicParsing="false" text="Submit" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,78 @@
+
+public class binaryNode 
+{
+	private String data;
+	private binaryNode parent;
+	private binaryNode top;
+	private binaryNode bottom;
+	
+	public binaryNode()
+	{
+		data = "";
+		parent = null;
+		top = null;
+		bottom = null;
+	}
+	public binaryNode(String initData)
+	{
+		data = initData;
+		parent = null;
+		top = null;
+		bottom = null;
+	}
+	public binaryNode(String initData, binaryNode initT)
+	{
+		data = initData;
+		parent = null;
+		top = initT;
+		bottom = null;
+	}
+	public binaryNode(String initData, binaryNode initT, binaryNode initB)
+	{
+		data = initData;
+		parent = null;
+		top = initT;
+		bottom = initB;
+	}
+	public binaryNode(String initData, binaryNode initT, binaryNode initB, binaryNode initP)
+	{
+		data = initData;
+		parent = initP;
+		top = initT;
+		bottom = initB;
+	}
+
+	public String getData()
+	{
+		return data;
+	}
+	public binaryNode getParent()
+	{
+		return parent;
+	}
+	public binaryNode getTop()
+	{
+		return top;
+	}
+	public binaryNode getBottom()
+	{
+		return bottom;
+	}
+
+	public void setData(String nData)
+	{
+		data = nData;
+	}
+	public void setParent(binaryNode nParent)
+	{
+		parent = nParent;
+	}
+	public void setTop(binaryNode nTop)
+	{
+		top = nTop;
+	}
+	public void setBottom(binaryNode nBottom)
+	{
+		bottom = nBottom;
+	}
+}

@@ -1,0 +1,9 @@
+package application;
+
+public class TipCalculatorController 
+{
+    void calculateButtonPressed(ActionEvent event) 
+    {
+
+    }
+}

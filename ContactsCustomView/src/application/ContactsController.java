@@ -1,0 +1,230 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListCell;
+import javafx.util.Callback;
+import javafx.event.ActionEvent;
+
+import javax.imageio.ImageIO;
+
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import java.io.File;
+import java.awt.Image;
+
+public class ContactsController 
+{
+
+    @FXML private TextField firstNameDisplayTextField;
+    @FXML private TextField lastNameDisplayTextField;
+    @FXML private TextField emailDisplayTextField;
+    @FXML private TextField phoneDisplayTextField;
+    @FXML private TextField imageTextField;
+    
+    @FXML private TextField firstNameTextField;
+    @FXML private TextField lastNameTextField;
+    @FXML private TextField phoneTextField;
+    @FXML private TextField emailTextField;
+    @FXML private TextField imageDisplayTextField;
+    
+    @FXML private GridPane displayPane;
+    @FXML private Button addButton;
+    @FXML private Button removeButton;
+    @FXML private Button updateButton;
+    
+    @FXML private ListView<Contact> contactsListView;
+    
+    private ObservableList<Contact> contacts = FXCollections.observableArrayList();
+    
+    public void initialize()
+    {
+    	contacts.add(new Contact("John","Smith","johnsmith29@email.com","123456789"));
+    	contacts.add(new Contact("Mary","Smith","marysmith10@email.com","123123123"));
+    	contacts.add(new Contact("Jack","Daniels","jd420@email.com","646646646"));
+    	contacts.add(new Contact("Winne","the Pooh","honeyMan@email.com","555555555"));
+    	contacts.add(new Contact("John","Wick","dogLover99@email.com","666666666"));
+    	contacts.add(new Contact("Lord","Max","whatisThis@email.com","897648039"));
+    	contacts.add(new Contact("Teddy","Roosevelt","president1901@email.com","346928019"));
+    	contacts.add(new Contact("Farhan","Zaman","fzel1024@email.com","347646212"));
+    	contacts.add(new Contact("Maximillian","Pegasus","yugiBoy69@email.com","696969696"));
+    	contacts.add(new Contact("Ash","Ketchup","catchEmAll151@email.com","767896510"));
+    	contactsListView.setItems(contacts);
+    	
+    	sort();
+    	displayPane.setOpacity(0);
+    	
+    	contactsListView.getSelectionModel().selectedItemProperty().addListener
+    	(
+    		new ChangeListener<Contact>()
+    		{
+    			@Override
+    			public void changed(ObservableValue<? extends Contact> ov, Contact oldValue, Contact newValue)
+    			{
+    				if(!contacts.isEmpty() && newValue != null)
+    				{
+	    				firstNameDisplayTextField.setText(newValue.getFirstName());
+	    				lastNameDisplayTextField.setText(newValue.getLastName());
+	    				emailDisplayTextField.setText(newValue.getEmail());
+	    				phoneDisplayTextField.setText(newValue.getPhoneNumber());
+	    				imageDisplayTextField.setText(newValue.getPicture());
+	    				displayPane.setOpacity(1);
+    				}
+    			}
+    		}
+    	);
+    	
+    	contactsListView.setCellFactory(
+            	new Callback<ListView<Contact>, ListCell<Contact>>()
+            	{
+            		@Override
+            		public ListCell<Contact> call(ListView<Contact> listView)
+            		{
+            			return new ImageTextCell();
+            		}
+            	}
+            );
+    }
+    
+    public void addContact(ActionEvent e)
+    {
+    	if(firstNameTextField.getText().isEmpty())
+    	{
+    		firstNameTextField.requestFocus();
+    		return;
+    	}
+    	
+    	if(lastNameTextField.getText().isEmpty())
+    	{
+    		lastNameTextField.requestFocus();
+    		return;
+    	}
+    	
+    	if(imageTextField.getText().isEmpty())
+    	{
+	    	contacts.add(new Contact(firstNameTextField.getText(),lastNameTextField.getText(),
+	    							 emailTextField.getText(),phoneTextField.getText()));
+    	}
+    	else
+    	{
+    		try
+    		{
+    			Image img = ImageIO.read(new File(imageTextField.getText()));
+    			contacts.add(new Contact(firstNameTextField.getText(),lastNameTextField.getText(),
+						 emailTextField.getText(),phoneTextField.getText(),"file:///"+imageTextField.getText()));
+    		}
+    		catch(Exception ex)
+    		{
+    			imageTextField.requestFocus();
+    		}
+    	}
+    	
+    	Contact selectedItem = contacts.get(contacts.size()-1);
+    	sort();
+    	int index = contacts.indexOf(selectedItem);
+    	contactsListView.getSelectionModel().select(index);
+    	contactsListView.getFocusModel().focus(index);
+    	contactsListView.scrollTo(index);
+    	contactsListView.refresh();
+    }
+    
+    public void updateContact(ActionEvent e)
+    {
+    	if(firstNameDisplayTextField.getText().isEmpty())
+    	{
+    		firstNameDisplayTextField.requestFocus();
+    		return;
+    	}
+    	
+    	if(lastNameDisplayTextField.getText().isEmpty())
+    	{
+    		lastNameDisplayTextField.requestFocus();
+    		return;
+    	}
+    	
+    	
+    	int index = contactsListView.getSelectionModel().getSelectedIndex();
+    	Contact selectedItem = contacts.get(index);
+    	selectedItem.setFirstName(firstNameDisplayTextField.getText());
+    	selectedItem.setLastName(lastNameDisplayTextField.getText());
+    	selectedItem.setEmail(emailDisplayTextField.getText());
+    	selectedItem.setPhoneNumber(phoneDisplayTextField.getText());
+    	
+    	if(imageDisplayTextField.getText().isEmpty())
+    	{
+    		selectedItem.setPicture("default.jpg");
+    	}
+    	else
+    	{
+    		try
+    		{
+    			Image img = ImageIO.read(new File(imageDisplayTextField.getText()));
+    			selectedItem.setPicture("file:///"+imageDisplayTextField.getText());
+    		}
+    		catch(Exception ex)
+    		{
+    			imageDisplayTextField.requestFocus();
+    		}
+    	}
+    	
+    	sort();
+    	index = contacts.indexOf(selectedItem);
+    	contactsListView.getSelectionModel().select(index);
+    	contactsListView.getFocusModel().focus(index);
+    	contactsListView.scrollTo(index);
+    	//contactsListView.refresh();
+    }
+    
+    public void removeContact(ActionEvent e)
+    {
+    	if(contacts.isEmpty())
+    		return;
+    	
+    	int index = contactsListView.getSelectionModel().getSelectedIndex();
+    	if(index < 0)
+    		return;
+    	
+    	contacts.remove(index);
+    	contactsListView.refresh();
+    	if(contacts.isEmpty())
+    		displayPane.setOpacity(0);
+    }
+    
+    @FXML
+    void getImage(ActionEvent event) 
+    {
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+    	File selectedFile = fileChooser.showOpenDialog(null);
+    	if (selectedFile != null) 
+    	{
+    	    imageTextField.setText(selectedFile.getPath());
+    	}
+    }
+    @FXML
+    void getDisplayImage(ActionEvent event) 
+    {
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+    	File selectedFile = fileChooser.showOpenDialog(null);
+    	if (selectedFile != null) 
+    	{
+    	    imageDisplayTextField.setText(selectedFile.getPath());
+    	}
+    }
+    
+    private void sort()
+    {
+    	FXCollections.sort(contacts);
+    }
+    
+}

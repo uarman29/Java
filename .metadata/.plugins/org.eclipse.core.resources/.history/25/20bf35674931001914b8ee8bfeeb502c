@@ -1,0 +1,6 @@
+
+public class Navigator 
+{
+	private binaryTree source;
+	private binaryNode currentNode;
+}

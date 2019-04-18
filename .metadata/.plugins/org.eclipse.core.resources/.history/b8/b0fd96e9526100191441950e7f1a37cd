@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+public class CheckProtection 
+{
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter an amount less than $10,000");
+	}
+}

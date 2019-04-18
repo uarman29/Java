@@ -1,0 +1,14 @@
+
+public final class binaryTree 
+{
+	private binaryNode root;
+	private int depth;
+	private int upProb;
+	
+	public binaryTree()
+	{
+		root = new binaryNode();
+		depth = 0;
+		upProb = 50;
+	}
+}

@@ -1,0 +1,13 @@
+
+public class binaryNode 
+{
+	private String data;
+	private binaryNode parent;
+	private binaryNode left;
+	private binaryNode right;
+	
+	public binaryNode(String initData, binaryNode initL = NULL, binaryNode initR = NULL)
+	{
+		
+	}
+}
